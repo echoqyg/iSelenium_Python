@@ -3,20 +3,20 @@
 import configparser
 import os
 
-from day01.get_token import get_token
 
-
-class TestConfig():
-    # 设置地址
+class GetConfig():
+    # 设置地址 取上上个目录的绝对路径
     _path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-    _path_2 = os.path.abspath(os.path.join(os.getcwd(), "../.."))
-    _path_3 = os.path.join(_path_2, "day01/config.ini")
+    #取上一个目录绝对路径
+    _path_2 = os.path.abspath(os.path.join(os.getcwd(), ".."))
+    #拼接路径
+    _path_3 = os.path.join(_path_2, "config.ini")
 
     # 获取config.ini section, option的值
-    def get_config(self):
+    def get_config(self,section, option):
         config = configparser.ConfigParser()
         config.read(self._path_3)
-        return config.get('wechart', 'secret')
+        return config.get(section, option)
 
     # 修改config.ini section, option的值
     def set_config(self):
@@ -27,8 +27,8 @@ class TestConfig():
 
 
 if __name__ == "__main__":
-    # print(TestConfig().path_3)
+    print(GetConfig()._path)
     # print(os.getcwd())
     # print(os.path.join(os.getcwd(), "../.."))
     # print(get_token(TestConfig().get_config()))
-    TestConfig().set_config()
+    # TestConfig().set_config()
