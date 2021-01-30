@@ -1,5 +1,6 @@
-"url": ""
 "method": "post"
+"url": "https://qyapi.weixin.qq.com/cgi-bin/user/create"
+"params": ""
 "json":
   "userid": "zhangsan"
   "name": "张三"

@@ -32,7 +32,7 @@ class MemberApi(BaseApi):
         with open(add_member_path, encoding="utf-8") as f:
             request = yaml.safe_load(f)
         #更新url的值
-        request["url"]=f"https://qyapi.weixin.qq.com/cgi-bin/user/create?access_token={self.get_token(secret)}"
+        request["params"]=f"access_token={self.get_token(secret)}"
         # 增加成员
         res = self.request(request)
         return res.text
