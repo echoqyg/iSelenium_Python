@@ -1,0 +1,8 @@
+"url": ""
+"method": "post"
+"json":
+  "userid": "zhangsan"
+  "name": "张三"
+  "alias": "jackzhang"
+  "mobile": "+86 13800000000"
+  "department": [1, 2]
