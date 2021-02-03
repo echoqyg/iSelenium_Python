@@ -1,0 +1,9 @@
+"method": ${method}
+"url": ${url}
+"params": ${params}
+"json":
+  "userid": ${userid}
+  "name": ${name}
+  "alias": ${alias}
+  "mobile": ${mobile}
+  "department": ${department}
