@@ -46,10 +46,8 @@ class MemberApi(BaseApi):
         # yaml文件路径
         add_member_path = self.path_join(self.base_path, "data/api/contact/member/add_member_template.yml")
         with open(add_member_path, encoding="utf-8") as f:
-            request = yaml.safe_load(f)
-        # print(request)
-        print(self.template_yml(request, data))
-        return self.request(yaml.safe_load(self.template_yml(request, data))).text
+            request = yaml.safe_load(self.template_yml(f.read(), data))
+        return self.request(request).text
 
     # 删除成员
     def delete_member(self):

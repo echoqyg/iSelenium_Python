@@ -34,8 +34,8 @@ class BaseApi:
         return os.path.join(path, join_path)
 
     # 使用Template方法替换yml重的变量
-    def template_yml(self, r_data: dict, data: dict):
-        return Template(str(r_data)).substitute(data)
+    def template_yml(self, r_data, data: dict):
+        return Template(r_data).substitute(data)
 
 
 if __name__ == '__main__':
