@@ -40,13 +40,12 @@ class MemberApi(BaseApi):
 
     def add_member_template(self):
         secret = GetConfig().get_config("wechart", "secret")
-        data = {"method": "post", "url": "https://qyapi.weixin.qq.com/cgi-bin/user/create",
-                "params": f"access_token={self.get_token(secret)}", "userid": "zhangsan", "name": "张三",
+        data = {"token": self.get_token(secret), "userid": "zhangsan", "name": "张三",
                 "alias": "jackzhang", "mobile": "+86 13800000000", "department": [1, 2]}
         # yaml文件路径
         member_path = self.path_join(self.base_path, "data/api/contact/member/dispose_member_template.yml")
-        request = self.template_yml(member_path, data, "add")
-        return self.request(request).json()
+        request_data = self.template_yml(member_path, data, "add")
+        return self.request(request_data).json()
 
     # 删除成员
     def delete_member(self):

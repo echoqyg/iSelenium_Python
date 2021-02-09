@@ -1,7 +1,7 @@
 "add":
-  "method": ${method}
-  "url": ${url}
-  "params": ${params}
+  "method": "post"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/create"
+  "params": "access_token=${token}"
   "json":
     "userid": ${userid}
     "name": ${name}

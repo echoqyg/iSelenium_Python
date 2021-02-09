@@ -38,11 +38,11 @@ class BaseApi:
     def template_yml(self, member_path, data: dict, sub=None):
         with open(member_path, encoding="utf-8") as f:
             if sub == None:
-                request = yaml.safe_load(Template(f.read()).substitute(data))
+                request_data = yaml.safe_load(Template(f.read()).substitute(data))
             else:
                 #读取dict中sub的value，在转换成字符串
-                request = yaml.safe_load(Template(yaml.safe_dump(yaml.safe_load(f)[sub])).substitute(data))
-        return request
+                request_data = yaml.safe_load(Template(yaml.safe_dump(yaml.safe_load(f)[sub])).substitute(data))
+        return request_data
 
 
 if __name__ == '__main__':
