@@ -6,7 +6,7 @@ import os
 
 class GetLog:
     # 取上一个目录绝对路径
-    _path_2 = os.path.abspath(os.path.join(os.getcwd(), ".."))
+    _path_2 = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
     # 拼接路径
     _path_3 = os.path.join(_path_2, "log", "log.log")
 

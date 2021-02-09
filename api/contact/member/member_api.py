@@ -44,10 +44,9 @@ class MemberApi(BaseApi):
                 "params": f"access_token={self.get_token(secret)}", "userid": "zhangsan", "name": "张三",
                 "alias": "jackzhang", "mobile": "+86 13800000000", "department": [1, 2]}
         # yaml文件路径
-        add_member_path = self.path_join(self.base_path, "data/api/contact/member/add_member_template.yml")
-        with open(add_member_path, encoding="utf-8") as f:
-            request = yaml.safe_load(self.template_yml(f.read(), data))
-        return self.request(request).text
+        member_path = self.path_join(self.base_path, "data/api/contact/member/dispose_member_template.yml")
+        request = self.template_yml(member_path, data, "add")
+        return self.request(request).json()
 
     # 删除成员
     def delete_member(self):
