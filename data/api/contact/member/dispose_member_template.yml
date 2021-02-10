@@ -5,10 +5,9 @@
   "json":
     "userid": ${userid}
     "name": ${name}
-    "alias": ${alias}
     "mobile": ${mobile}
     "department": ${department}
 "delete":
-  "method": ${method}
-  "url": ${url}
-  "params": ${params}
+  "method": "get"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/delete"
+  "params": "access_token=${token}&userid=${userid}"
