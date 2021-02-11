@@ -11,3 +11,7 @@
   "method": "get"
   "url": "https://qyapi.weixin.qq.com/cgi-bin/user/delete"
   "params": "access_token=${token}&userid=${userid}"
+"get":
+  "method": "get"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/get"
+  "params": "access_token=${token}&userid=${userid}"

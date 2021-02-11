@@ -27,7 +27,7 @@ class BaseApi:
 
     def request(self, request):
         res = requests.request(**request)
-        log.info(f"传出结果：{res.json()}")
+        log.info(f"响应结果：{res.json()}")
         return res.json()
 
     def path_join(self, path, join_path):
@@ -42,7 +42,7 @@ class BaseApi:
             else:
                 #读取dict中sub的value，在转换成字符串
                 request_data = yaml.safe_load(Template(yaml.safe_dump(yaml.safe_load(f)[sub])).substitute(data))
-        log.info(f"传入数据：{request_data}")
+        log.info(f"请求数据：{request_data}")
         return request_data
 
 

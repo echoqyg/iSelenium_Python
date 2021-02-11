@@ -2,6 +2,7 @@
 # encoding: utf-8
 import logging
 import os
+import time
 
 
 class GetLog:
@@ -28,11 +29,12 @@ class GetLog:
         self.stream_handle.setFormatter(self.formatter)
 
     def set_file_handle(self):
-
+        #时间戳按照时间格式数据，作为文件名
+        file_name = time.strftime("%Y-%m-%d_%H", time.localtime(time.time()))
         # 拼接路径
-        path = os.path.join(self.base_path, "log", "log.log")
+        path = os.path.join(self.base_path, "log", f"{file_name}.log")
         # 创建文件处理器的对象
-        self.file_handle = logging.FileHandler(path)
+        self.file_handle = logging.FileHandler(path,mode="w")
         self.file_handle.setLevel(logging.INFO)
         # 设置文件处理器输出格式
         self.file_handle.setFormatter(self.formatter)

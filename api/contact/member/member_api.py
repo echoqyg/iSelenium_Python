@@ -7,7 +7,7 @@ import requests
 import yaml
 
 from api.base_api import BaseApi
-from common.get_config import GetConfig
+from common.get_config import GetConfig, cf
 
 
 class MemberApi(BaseApi):
@@ -40,7 +40,7 @@ class MemberApi(BaseApi):
     #     return res
 
     def add_member_template(self,userid,name,mobile,department):
-        secret = GetConfig().get_config("wechart", "secret")
+        secret = cf.get_config("wechart", "secret")
         data = {"token": self.get_token(secret), "userid": userid, "name": name,
                 "mobile": mobile, "department": department}
         request_data = self.template_yml(self._member_path, data, "add")
@@ -48,15 +48,19 @@ class MemberApi(BaseApi):
 
     # 删除成员
     def delete_member(self,userid):
-        secret = GetConfig().get_config("wechart", "secret")
+        secret = cf.get_config("wechart", "secret")
         token = self.get_token(secret)
         data = {"token":token,"userid":userid}
         request_data = self.template_yml(self._member_path, data, "delete")
         return self.request(request_data)
 
     # 获取成员
-    def get_member(self):
-        pass
+    def get_member(self,userid):
+        secret = cf.get_config("wechart", "secret")
+        token = self.get_token(secret)
+        data = {"token": token, "userid": userid}
+        request_data = self.template_yml(self._member_path, data, "get")
+        return self.request(request_data)
 
     # 编辑成员
     def edit_member(self):
