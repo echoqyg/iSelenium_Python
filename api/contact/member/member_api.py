@@ -12,6 +12,7 @@ from common.get_config import GetConfig, cf
 
 class MemberApi(BaseApi):
     _member_path = "data/api/contact/member/dispose_member_template.yml"
+
     # def add_member(self):
     #     secret = GetConfig().get_config("wechart", "secret")
     #     # 增加成员
@@ -39,23 +40,26 @@ class MemberApi(BaseApi):
     #     res = self.request(request)
     #     return res
 
-    def add_member_template(self,userid,name,mobile,department):
+    def add_member_template(self, userid, name, mobile, department, position="", gender=""):
         secret = cf.get_config("wechart", "secret")
         data = {"token": self.get_token(secret), "userid": userid, "name": name,
-                "mobile": mobile, "department": department}
+                "mobile": mobile, "department": department, "position": position, "gender": gender}
+        for k in data.keys():
+            if data[k] == None or data[k] == "None":
+                data[k] = ""
         request_data = self.template_yml(self._member_path, data, "add")
         return self.request(request_data)
 
     # 删除成员
-    def delete_member(self,userid):
+    def delete_member(self, userid):
         secret = cf.get_config("wechart", "secret")
         token = self.get_token(secret)
-        data = {"token":token,"userid":userid}
+        data = {"token": token, "userid": userid}
         request_data = self.template_yml(self._member_path, data, "delete")
         return self.request(request_data)
 
     # 获取成员
-    def get_member(self,userid):
+    def get_member(self, userid):
         secret = cf.get_config("wechart", "secret")
         token = self.get_token(secret)
         data = {"token": token, "userid": userid}

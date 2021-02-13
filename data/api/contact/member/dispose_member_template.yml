@@ -7,6 +7,8 @@
     "name": ${name}
     "mobile": ${mobile}
     "department": ${department}
+    "position": ${position}
+    "gender": ${gender}
 "delete":
   "method": "get"
   "url": "https://qyapi.weixin.qq.com/cgi-bin/user/delete"
