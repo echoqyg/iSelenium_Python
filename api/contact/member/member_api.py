@@ -44,10 +44,12 @@ class MemberApi(BaseApi):
         secret = cf.get_config("wechart", "secret")
         data = {"token": self.get_token(secret), "userid": userid, "name": name,
                 "mobile": mobile, "department": department, "position": position, "gender": gender}
-        for k in data.keys():
-            if data[k] == None or data[k] == "None":
-                data[k] = ""
+
         request_data = self.template_yml(self._member_path, data, "add")
+        if request_data.get("json"):
+            for k in request_data["json"].keys():
+                if request_data["json"][k] == "None":
+                    request_data["json"][k] = None
         return self.request(request_data)
 
     # 删除成员

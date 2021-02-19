@@ -18,6 +18,11 @@ class GetConfig():
         config.read(self._path_3)
         return config.get(section, option)
 
+    def get_config_int(self,section, option):
+        config = configparser.ConfigParser()
+        config.read(self._path_3)
+        return config.getint(section, option)
+
     # 修改config.ini section, option的值
     def set_config(self):
         config = configparser.ConfigParser()
